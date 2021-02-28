@@ -27,12 +27,12 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login").permitAll().and().authorizeRequests()
-                .anyRequest().authenticated();
+        http.formLogin().permitAll().and().authorizeRequests()
+                .anyRequest().authenticated().and().csrf().disable();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource);
+        auth.jdbcAuthentication().dataSource(dataSource).groupAuthoritiesByUsername("select g.id, g.group_name, ga.authority from `groups` g, group_members gm, group_authorities ga where gm.username = ? and g.id = ga.group_id and g.id = gm.group_id");
     }
 }

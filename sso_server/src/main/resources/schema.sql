@@ -18,7 +18,30 @@ CREATE TABLE `sso`.`oauth_client_details` (
 CREATE TABLE `sso`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(20) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
   `enabled` BIT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+
+CREATE TABLE `sso`.`groups` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `group_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `sso`.`group_members` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `group_id` INT NOT NULL,
+  `username` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `sso`.`group_authorities` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `group_id` INT NOT NULL,
+  `authority` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `sso`.`authorities` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(20) NOT NULL,
+  `authority` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
