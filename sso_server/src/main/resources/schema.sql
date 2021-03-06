@@ -2,18 +2,20 @@ create schema sso;
 use sso;
 
 CREATE TABLE `sso`.`oauth_client_details` (
-  `client_id` INT NOT NULL AUTO_INCREMENT,
-  `client_secret` VARCHAR(45) NOT NULL,
-  `resource_ids` VARCHAR(200) NULL,
-  `scope` VARCHAR(45) NULL,
-  `authorized_grant_types` VARCHAR(45) NULL,
-  `web_server_redirect_uri` VARCHAR(1000) NULL,
-  `authorities` VARCHAR(100) NULL,
-  `access_token_validity` INT NULL,
-  `refresh_token_validity` INT NULL,
-  `additional_information` VARCHAR(200) NULL,
-  `autoapprove` BIT NULL,
-  PRIMARY KEY (`client_id`));
+   `id` int NOT NULL AUTO_INCREMENT,
+   `client_id` varchar(45) NOT NULL,
+   `client_secret` varchar(200) NOT NULL,
+   `resource_ids` varchar(200) DEFAULT NULL,
+   `scope` varchar(45) DEFAULT NULL,
+   `authorized_grant_types` varchar(45) DEFAULT NULL,
+   `web_server_redirect_uri` varchar(1000) DEFAULT NULL,
+   `authorities` varchar(100) DEFAULT NULL,
+   `access_token_validity` int DEFAULT NULL,
+   `refresh_token_validity` int DEFAULT NULL,
+   `additional_information` varchar(200) DEFAULT NULL,
+   `autoapprove` bit(1) DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `client_id_UNIQUE` (`client_id`));
 
 CREATE TABLE `sso`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -21,7 +23,7 @@ CREATE TABLE `sso`.`users` (
   `password` VARCHAR(100) NOT NULL,
   `enabled` BIT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+  UNIQUE KEY `username_UNIQUE` (`username`));
 
 CREATE TABLE `sso`.`groups` (
   `id` INT NOT NULL AUTO_INCREMENT,
