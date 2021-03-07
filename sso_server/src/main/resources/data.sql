@@ -13,5 +13,5 @@ insert into oauth_client_details(client_id, client_secret, resource_ids, scope, 
                                  web_server_redirect_uri, authorities, access_token_validity, refresh_token_validity,
                                  additional_information, autoapprove)
 values ('decision_management', '$2a$10$9I6SVCzLL8W4erROJxJSJ.tk2SWsDMIrIYuGlYSt/LHISdHcZqGGW', null, 'user',
-        'authorization_code', 'http://localhost:10000/login', null, 7200, 7200, 'decision management', 1);
+        'authorization_code', 'http://localhost:10000/login', null, 7200, 7200, 'decision management', 'true');
 commit;

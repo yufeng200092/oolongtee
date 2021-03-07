@@ -13,7 +13,7 @@ CREATE TABLE `sso`.`oauth_client_details` (
    `access_token_validity` int DEFAULT NULL,
    `refresh_token_validity` int DEFAULT NULL,
    `additional_information` varchar(200) DEFAULT NULL,
-   `autoapprove` bit(1) DEFAULT NULL,
+   `autoapprove` VARCHAR(20) DEFAULT NULL,
    PRIMARY KEY (`id`),
    UNIQUE KEY `client_id_UNIQUE` (`client_id`));
 

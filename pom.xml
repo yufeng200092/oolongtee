@@ -19,6 +19,7 @@
     </properties>
     <modules>
         <module>sso_server</module>
+        <module>decision_management</module>
     </modules>
     <dependencies>
         <dependency>
