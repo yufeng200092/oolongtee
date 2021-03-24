@@ -20,6 +20,7 @@
     <modules>
         <module>sso_server</module>
         <module>decision_management</module>
+        <module>decision_core</module>
     </modules>
     <dependencies>
         <dependency>
